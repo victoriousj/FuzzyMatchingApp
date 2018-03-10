@@ -7,8 +7,12 @@ using System.Web;
 
 namespace FuzzyMatchingApp
 {
-	public class Context: DbContext
+	public class FuzzyMatchingContext: DbContext
 	{
+		public FuzzyMatchingContext() : base("FuzzyMatchingContext")
+		{ }
+
 		public DbSet<Customer> Customers { get; set; }
+
 	}
 }
