@@ -9,7 +9,7 @@ namespace FuzzyMatchingApp.Models
 	{
 		public Customer() { }
 
-		public Customer(string firstName, string middleName, string lastName)
+		public Customer(string firstName, string lastName)
 		{
 			FirstName = firstName;
 			LastName = lastName;

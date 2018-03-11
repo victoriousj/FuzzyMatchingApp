@@ -8,5 +8,6 @@ namespace FuzzyMatchingApp.Models.ViewModels
 	public class HomePageViewModel
 	{
 		public List<Customer> Customers { get; set; }
+		public List<Tuple<string, int>> UniqueNames { get; set; }
 	}
 }
