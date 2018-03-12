@@ -3,12 +3,10 @@
 @{
     ViewBag.Title = "Home Page";
 }
-@*@foreach (var name in Model.UniqueNames.OrderByDescending(c => c.Item2))
-{
-	<p>@($"{name.Item1}, count: {name.Item2}")</p>
-}*@
 
-<div class="jumbotron">
+
+<div style="padding: 200px" class="jumbotron">
+	<h3 class="text-center">Search For A Customer</h3>
 	<select class="name-picker form-control" name="names">
 		<option value=""></option>
 	</select>
