@@ -23,21 +23,6 @@ namespace FuzzyMatchingApp.Controllers
 
 		public ActionResult Index()
 		{
-			//List<Customer> customers = new List<Customer>();
-			//customers = service.FetchAllCustomers();
-
-			//List<Tuple<string, int>> uniqueNames = new List<Tuple<string, int>>();
-			//foreach (var name in customers.GroupBy(c => c.FirstName))
-			//{
-			//	uniqueNames.Add(new Tuple<string, int>(name.FirstOrDefault().FirstName, name.Count()));
-			//}
-
-			//if (customers != null)
-			//{
-			//	model.Customers = customers;
-			//	model.UniqueNames = uniqueNames;
-			//}
-
 			HomePageViewModel model = new HomePageViewModel();
 			return View(model);
 		}

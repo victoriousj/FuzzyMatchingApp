@@ -38,8 +38,23 @@ namespace FuzzyMatchingApp.Service
 		
 		public List<Customer> FetchCustomersByName(string term)
 		{
+			term = term.ToLower().Replace(',', ' ');
+			var terms = term.Split(' ');
+
 			var customers = new List<Customer>();
-			return customers = repository.SearchCustomersByName(term);
+			if (terms.Length > 1)
+			{
+				foreach (var singleTerm in terms)
+				{
+					customers.AddRange(repository.SearchCustomersByName(singleTerm));
+				}
+			}
+			else
+			{
+				customers = repository.SearchCustomersByName(term);
+			}
+
+			return customers;
 		}
 	}
 }

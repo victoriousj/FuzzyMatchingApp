@@ -37,22 +37,7 @@ namespace FuzzyMatchingApp.Controllers
 
 		public JsonResult CustomersSearch(string term)
 		{
-			term = term.ToLower().Replace(',', ' ');
-			var terms = term.Split(' ');
-
-			var customers = new List<Customer>();
-			if (terms.Length > 1)
-			{
-				foreach (var singleTerm in terms)
-				{
-					customers.AddRange(service.FetchCustomersByName(singleTerm));
-				}
-			}
-			else
-			{
-				customers = service.FetchCustomersByName(term);
-			}
-
+			var customers = service.FetchCustomersByName(term);
 
 			if (customers.Any())
 			{
