@@ -167,6 +167,10 @@
     <Compile Include="Migrations\201803130020262_addAddress.Designer.cs">
       <DependentUpon>201803130020262_addAddress.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803130307460_AddPhoneNumbers.cs" />
+    <Compile Include="Migrations\201803130307460_AddPhoneNumbers.Designer.cs">
+      <DependentUpon>201803130307460_AddPhoneNumbers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\ViewModels\HomePageViewModel.cs" />
@@ -243,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803130020262_addAddress.resx">
       <DependentUpon>201803130020262_addAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803130307460_AddPhoneNumbers.resx">
+      <DependentUpon>201803130307460_AddPhoneNumbers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

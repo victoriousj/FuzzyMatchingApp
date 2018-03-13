@@ -29,6 +29,7 @@ namespace FuzzyMatchingApp.Controllers
 				return Json(new {
 					firstName = customer.FirstName,
 					lastName = customer.LastName,
+					address = customer.Address,
 					id = customer.ID },
 					JsonRequestBehavior.AllowGet);
 			}
@@ -41,9 +42,29 @@ namespace FuzzyMatchingApp.Controllers
 
 			if (customers.Any())
 			{
-				return Json(customers, JsonRequestBehavior.AllowGet);
+				return Json(customers.Select(c => new
+				{
+					firstName = c.FirstName,
+					lastName = c.LastName,
+					address = c.Address,
+					id = c.ID,
+				}), JsonRequestBehavior.AllowGet);
 			}
 			return Json(new object { });
 		}
-    }
+
+		public JsonResult GetCustomerAddress(string id)
+		{
+			var customer = service.FetchCustomerById(int.Parse(id));
+
+			return Json(new
+			{
+				firstName = customer.FirstName,
+				lastName = customer.LastName,
+				address = customer.Address,
+				phoneNumber = customer.PhoneNumber,
+			}, JsonRequestBehavior.AllowGet);
+		}
+
+	}
 }
