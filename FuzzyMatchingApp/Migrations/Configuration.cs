@@ -19,6 +19,7 @@ namespace FuzzyMatchingApp.Migrations
 		static string path = Path.GetFullPath(@"..\..\");
 		static string LASTNAMES = path + @"Resources\lastNames.txt";
 		static string FIRSTNAMES = path + @"Resources\maleAndFemaleNames.txt";
+		static string ADDRESSES = path + @"Resources\addresses.txt";
 		static Random random = new Random();
 
 		// Generate 10,000 randomly named Customer entities.
@@ -29,19 +30,25 @@ namespace FuzzyMatchingApp.Migrations
 			int firstNameCount = firstNameList.Count();
 
 			string lastNamesString = File.ReadAllText(LASTNAMES);
-			List<string> lastNameList = lastNamesString.Split(' ').OrderBy(c => c).ToList();
+			List<string> lastNameList = lastNamesString.Split(' ').ToList();
 			int lastNameCount = lastNameList.Count();
+
+			string addressesString = File.ReadAllText(ADDRESSES);
+			List<string> addressList = addressesString.Split('|').ToList();
+			int addressesCount = addressList.Count();
 
 			List<Customer> customers = new List<Customer>();
 			for (int i = 0; i <= 10000; i++)
 			{
 				string randomFirstName = firstNameList[random.Next(firstNameCount)];
 				string randomLastName = lastNameList[random.Next(lastNameCount)];
+				string randomAddress = addressList[random.Next(addressesCount)];
 
 				Customer customer = new Customer
 				{
 					FirstName = randomFirstName,
 					LastName = randomLastName,
+					Address = randomAddress,
 				};
 				customers.Add(customer);
 			}

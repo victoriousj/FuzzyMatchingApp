@@ -5,7 +5,7 @@
         ajax: {
             url: '/Api/CustomersSearch',
             dataType: 'json',
-            quietMillis: 2000,
+            delay: 500,
             processResults: function (data, params) {
                 return {
                     results: $.map(data, function (result) {

@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace FuzzyMatchingApp.Helpers
 {
-    public class ResultOrderHelper
+    public class FuzzyMatchingHelper
     {
         /// <summary>
         /// Phonetic string matching algorithm, based on:  <a href="https://en.wikipedia.org/wiki/Soundex">SoundEx</a>
@@ -242,6 +242,8 @@ namespace FuzzyMatchingApp.Helpers
             string first2chars = string.Empty;
             if (name2.Length >= 2)
                 name2.ToString().Substring(0, 2);
+
+			if (name2.Length == 0) return string.Empty; 
 
             switch (first2chars)
             {
@@ -507,5 +509,5 @@ namespace FuzzyMatchingApp.Helpers
 
             return firstMatch > secondMatch ? secondString : firstString;
         }
-    }
+	}
 }

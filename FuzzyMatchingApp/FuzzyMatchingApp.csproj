@@ -151,11 +151,10 @@
     <Compile Include="Controllers\ApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="FuzzyMatchingContext.cs" />
-    <Compile Include="FuzzyMatchHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\ResultOrderHelper.cs" />
+    <Compile Include="Helpers\FuzzyMatchingHelper.cs" />
     <Compile Include="Migrations\201803100250403_InitialCreate.cs" />
     <Compile Include="Migrations\201803100250403_InitialCreate.Designer.cs">
       <DependentUpon>201803100250403_InitialCreate.cs</DependentUpon>
@@ -163,6 +162,10 @@
     <Compile Include="Migrations\201803110218508_Initial.cs" />
     <Compile Include="Migrations\201803110218508_Initial.Designer.cs">
       <DependentUpon>201803110218508_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803130020262_addAddress.cs" />
+    <Compile Include="Migrations\201803130020262_addAddress.Designer.cs">
+      <DependentUpon>201803130020262_addAddress.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -237,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803110218508_Initial.resx">
       <DependentUpon>201803110218508_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803130020262_addAddress.resx">
+      <DependentUpon>201803130020262_addAddress.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

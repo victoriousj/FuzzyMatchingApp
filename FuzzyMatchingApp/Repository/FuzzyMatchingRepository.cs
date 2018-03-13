@@ -1,6 +1,8 @@
-﻿using FuzzyMatchingApp.Models;
+﻿using FuzzyMatchingApp.Helpers;
+using FuzzyMatchingApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Web;
 
@@ -39,10 +41,17 @@ namespace FuzzyMatchingApp.Repository
 			List<Customer> customers = new List<Customer>();
 			using (var context = new FuzzyMatchingContext())
 			{
-				customers = context.Customers
-					.Where(c => c.FirstName.Contains(term) 
-					|| c.LastName.Contains(term))
-					.ToList();
+				customers.AddRange(
+					context.Customers
+					.Where(c => 
+						   SqlFunctions.PatIndex("%"+term+"%", c.FirstName) > 0
+						|| SqlFunctions.PatIndex("%"+term+"%", c.LastName) > 0
+						|| SqlFunctions.SoundCode(c.FirstName).Contains(SqlFunctions.SoundCode(term))
+						|| SqlFunctions.SoundCode(c.LastName).Contains(SqlFunctions.SoundCode(term)))
+					.Take(40).ToList());
+
+
+				customers.AddRange(context.Customers.OrderByDescending(c => SqlFunctions.Difference(c.LastName, term)).Take(40).ToList());
 			}
 			return customers;
 		}
