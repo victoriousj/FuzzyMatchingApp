@@ -10,31 +10,29 @@ namespace FuzzyMatchingApp.Service
 {
 	public class FuzzyMatchingService
 	{
-		private FuzzyMatchingContext context { get; set; }
-		private FuzzyMatchingRepository repository { get; set; }
+		private FuzzyMatchingRepository _repository { get; set; }
 
-		public FuzzyMatchingService(FuzzyMatchingContext context)
+		public FuzzyMatchingService()
 		{
-			this.context = context;
-			repository = new FuzzyMatchingRepository();
+			_repository = new FuzzyMatchingRepository();
 		}
 
 		public List<Customer> FetchAllCustomers()
 		{
 			var customers = new List<Customer>();
-			return customers = repository.FetchAllCustomers();
+			return customers = _repository.FetchAllCustomers();
 		}
 
 		public Customer FetchCustomerById(int id)
 		{
 			var customer = new Customer();
-			return customer = repository.FetchCustomer(id);
+			return customer = _repository.FetchCustomer(id);
 		}
 
 		public Customer FetchCustomerByName(string term)
 		{
 			var customer = new Customer();
-			return customer = repository.SearchCustomerByName(term);
+			return customer = _repository.SearchCustomerByName(term);
 		}
 		
 		public List<Customer> FetchCustomersByName(string term)
@@ -45,7 +43,7 @@ namespace FuzzyMatchingApp.Service
 			var customers = new List<Customer>();
 			foreach (var singleTerm in terms)
 			{
-				customers.AddRange(repository.SearchCustomersByName(singleTerm));
+				customers.AddRange(_repository.SearchCustomersByName(singleTerm));
 			}
 			customers = OrderCustomerResults(term, customers).ToList();
 

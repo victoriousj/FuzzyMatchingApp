@@ -1,29 +1,23 @@
 ﻿using FuzzyMatchingApp.Models;
-using FuzzyMatchingApp.Repository;
 using FuzzyMatchingApp.Service;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace FuzzyMatchingApp.Controllers
 {
-    public class ApiController : Controller
+	public class ApiController : Controller
     {
-		private FuzzyMatchingContext context { get; set; }
-		private FuzzyMatchingService service { get; set; }
+		private FuzzyMatchingService _service { get; set; }
 
 		public ApiController()
 		{
-			context = new FuzzyMatchingContext();
-			service = new FuzzyMatchingService(context);
+			_service = new FuzzyMatchingService();
 		}
 
 		public JsonResult CustomerSearch(string term)
 		{
 			var customer = new Customer();
-			customer = service.FetchCustomerByName(term);
+			customer = _service.FetchCustomerByName(term);
 			if (customer != null)
 			{
 				return Json(new {
@@ -38,7 +32,7 @@ namespace FuzzyMatchingApp.Controllers
 
 		public JsonResult CustomersSearch(string term)
 		{
-			var customers = service.FetchCustomersByName(term);
+			var customers = _service.FetchCustomersByName(term);
 
 			if (customers.Any())
 			{
@@ -50,12 +44,12 @@ namespace FuzzyMatchingApp.Controllers
 					id = c.ID,
 				}), JsonRequestBehavior.AllowGet);
 			}
-			return Json(new object { });
+			return Json(new { });
 		}
 
 		public JsonResult GetCustomerAddress(string id)
 		{
-			var customer = service.FetchCustomerById(int.Parse(id));
+			var customer = _service.FetchCustomerById(int.Parse(id));
 
 			return Json(new
 			{

@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
     $('.name-picker').select2({
-        //placeholder: 'Search for a Customer',
-        minimumInputLength: 4,
+        minimumInputLength: 2,
         ajax: {
             url: '/Api/CustomersSearch',
             dataType: 'json',
@@ -17,7 +16,7 @@
     });
 
     $('.name-picker').on("select2:select", function (e) {
-        var customerId = $('.name-picker').val();
+        var customerId = document.getElementsByClassName('name-picker').value;
         $.ajax('/Api/GetCustomerAddress/' + customerId)
             .done(function (e) {
                 $('#customer').html('Name: ' + e.lastName + ', ' + e.firstName+ '<br /> Phone: ' + e.phoneNumber + '<br />Address:' + e.address);
