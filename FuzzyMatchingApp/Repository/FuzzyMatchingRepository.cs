@@ -9,17 +9,12 @@ namespace FuzzyMatchingApp.Repository
 	{
 		private FuzzyMatchingContext _context;
 
-		public FuzzyMatchingRepository()
-		{
+		public FuzzyMatchingRepository() =>
 			_context = new FuzzyMatchingContext();
-		}
 
-		public List<Customer> FetchAllCustomers()
-		{
-			var customers = new List<Customer>();
-			customers = _context.Customers.ToList();
-			return customers;
-		}
+
+		public List<Customer> FetchAllCustomers() =>
+			_context.Customers.ToList();
 
 		public Customer FetchCustomer(int id)
 		{
@@ -38,7 +33,7 @@ namespace FuzzyMatchingApp.Repository
 			customers.AddRange(
 				_context.Customers
 				.Where(c => 
-						SqlFunctions.PatIndex("%"+term+"%", c.FirstName) > 0
+					   SqlFunctions.PatIndex("%"+term+"%", c.FirstName) > 0
 					|| SqlFunctions.PatIndex("%"+term+"%", c.LastName) > 0
 					|| SqlFunctions.SoundCode(c.FirstName).Contains(SqlFunctions.SoundCode(term))
 					|| SqlFunctions.SoundCode(c.LastName).Contains(SqlFunctions.SoundCode(term)))

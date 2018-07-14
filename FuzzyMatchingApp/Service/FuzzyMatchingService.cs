@@ -4,7 +4,6 @@ using FuzzyMatchingApp.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace FuzzyMatchingApp.Service
 {
@@ -12,28 +11,17 @@ namespace FuzzyMatchingApp.Service
 	{
 		private FuzzyMatchingRepository _repository { get; set; }
 
-		public FuzzyMatchingService()
-		{
+		public FuzzyMatchingService() =>
 			_repository = new FuzzyMatchingRepository();
-		}
 
-		public List<Customer> FetchAllCustomers()
-		{
-			var customers = new List<Customer>();
-			return customers = _repository.FetchAllCustomers();
-		}
+		public List<Customer> FetchAllCustomers() =>
+			_repository.FetchAllCustomers();
 
-		public Customer FetchCustomerById(int id)
-		{
-			var customer = new Customer();
-			return customer = _repository.FetchCustomer(id);
-		}
+		public Customer FetchCustomerById(int id) =>
+			_repository.FetchCustomer(id);
 
-		public Customer FetchCustomerByName(string term)
-		{
-			var customer = new Customer();
-			return customer = _repository.SearchCustomerByName(term);
-		}
+		public Customer FetchCustomerByName(string term) => 
+			_repository.SearchCustomerByName(term);
 		
 		public List<Customer> FetchCustomersByName(string term)
 		{

@@ -16,10 +16,13 @@
     });
 
     $('.name-picker').on("select2:select", function (e) {
-        var customerId = document.getElementsByClassName('name-picker').value;
+        var customerId = document.getElementsByClassName('name-picker')[0].value;
         $.ajax('/Api/GetCustomerAddress/' + customerId)
             .done(function (e) {
-                $('#customer').html('Name: ' + e.lastName + ', ' + e.firstName+ '<br /> Phone: ' + e.phoneNumber + '<br />Address:' + e.address);
+                $('#customer').html(
+`Name: ${e.lastName}, ${e.firstName}
+<br />Phone: ${e.phoneNumber}
+<br />Address: ${e.address}`);
         })
     });
 });

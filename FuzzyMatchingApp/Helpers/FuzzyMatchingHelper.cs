@@ -16,9 +16,12 @@ namespace FuzzyMatchingApp.Helpers
         {
             StringBuilder result = new StringBuilder();
 
-            if (term == null || !(term.Length > 0)) return string.Empty;
+            if (term == null || !(term.Length > 0))
+			{
+				return string.Empty;
+			}
 
-            string previousCode;
+			string previousCode;
             string currentCode;
 
             result.Append(Char.ToUpper(term[0]));

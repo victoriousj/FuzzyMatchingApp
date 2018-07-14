@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace FuzzyMatchingApp.Models
 {
@@ -11,8 +8,8 @@ namespace FuzzyMatchingApp.Models
 
 		public Customer(string firstName, string lastName)
 		{
-			FirstName = firstName;
-			LastName = lastName;
+			FirstName = firstName ?? throw new ArgumentNullException();
+			LastName = lastName ?? throw new ArgumentNullException();
 		}
 
 		public int ID { get; set; }

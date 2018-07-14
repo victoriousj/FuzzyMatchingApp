@@ -6,13 +6,11 @@ using System.Web.Mvc;
 namespace FuzzyMatchingApp.Controllers
 {
 	public class ApiController : Controller
-    {
+	{
 		private FuzzyMatchingService _service { get; set; }
 
-		public ApiController()
-		{
+		public ApiController() =>
 			_service = new FuzzyMatchingService();
-		}
 
 		public JsonResult CustomerSearch(string term)
 		{
